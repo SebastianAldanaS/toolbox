@@ -32,6 +32,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -39,3 +40,56 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# uploads
+/public/uploads
+
+# ToolBox specific files
+/temp/
+/uploads/
+/downloads/
+
+# Test reports and generated files
+production-test-report.json
+deployment-report.json
+production-final-report.json
+executive-summary.json
+
+# FFmpeg and audio processing files
+ffmpeg.wasm
+ffmpeg-core.wasm
+audio-worklet.js
+
+# IDE and editor files
+.vscode/settings.json
+.vscode/launch.json
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+.Spotlight-V100
+.Trashes
+._*
+
+# Local development files
+*.local
+*.backup
+*.bak
+*.tmp
+
+# Audio/Video temporary files
+*.wav.tmp
+*.mp3.tmp
+*.mp4.tmp
+
+# Image processing temporary files
+*.jpg.tmp
+*.png.tmp
+*.webp.tmp
+
+# PDF processing temporary files
+*.pdf.tmp
+*.docx.tmp
