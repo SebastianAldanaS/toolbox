@@ -6,7 +6,7 @@ import { Upload, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
 import { FileUpload } from '@/types'
-import { formatFileSize, generateId, validateFileType } from '@/lib/utils'
+import { formatFileSize, generateId, validateFileType, getReadableFileTypes } from '@/lib/utils'
 import { cn } from '@/lib/utils'
 
 interface FileUploaderProps {
@@ -60,7 +60,8 @@ export function FileUploader({
       }))
 
     if (newFiles.length === 0 && acceptedFiles.length > 0) {
-      setRejectionError('Tipo de archivo no válido. Por favor, selecciona un archivo Word (.docx o .doc).')
+      const readableTypes = getReadableFileTypes(acceptedFileTypes)
+      setRejectionError(`Tipo de archivo no válido. Por favor, selecciona un archivo compatible: ${readableTypes}`)
       return
     }
 
@@ -80,7 +81,8 @@ export function FileUploader({
     onDropRejected: (rejectedFiles) => {
       const rejection = rejectedFiles[0]
       if (rejection.errors.some((e: any) => e.code === 'file-invalid-type')) {
-        setRejectionError('Tipo de archivo no válido. Por favor, selecciona un archivo Word (.docx o .doc).')
+        const readableTypes = getReadableFileTypes(acceptedFileTypes)
+        setRejectionError(`Tipo de archivo no válido. Por favor, selecciona un archivo compatible: ${readableTypes}`)
       } else if (rejection.errors.some((e: any) => e.code === 'file-too-large')) {
         setRejectionError(`El archivo es demasiado grande. Máximo permitido: ${formatFileSize(maxSize)}`)
       } else {
@@ -135,6 +137,9 @@ export function FileUploader({
         </p>
         <p className="text-sm text-gray-500">
           Máximo {maxFiles} archivo{maxFiles > 1 ? 's' : ''} de {formatFileSize(maxSize)}
+        </p>
+        <p className="text-xs text-gray-400 mt-1">
+          Tipos permitidos: {getReadableFileTypes(acceptedFileTypes)}
         </p>
       </div>
 

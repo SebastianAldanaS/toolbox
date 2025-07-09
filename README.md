@@ -137,6 +137,7 @@ node run-all-tests.js           # Suite completa
 1. Push tu código a GitHub
 2. Conecta tu repositorio en [Vercel](https://vercel.com)
 3. Deploy automático
+4. Configura variables de entorno si es necesario
 
 ### Manual
 ```bash

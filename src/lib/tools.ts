@@ -44,7 +44,7 @@ export const tools: Tool[] = [
     category: 'document',
     icon: 'FileText',
     path: '/tools/word-to-pdf',
-    acceptedFileTypes: ['application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword']
+    acceptedFileTypes: ['application/docx', 'application/msword']
   },
   {
     id: 'audio-downloader',
